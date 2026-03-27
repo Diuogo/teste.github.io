@@ -261,7 +261,7 @@ function saveDemoDB() {
     localStorage.setItem('nicedrop_demo_db', JSON.stringify(demoDatabase));
 }
 
-function handleLoginOffline(email, password) {
+async function handleLoginOffline(email, password) {
     const user = demoDatabase.users.find(u => u.email === email && u.password === password);
 
     try {
