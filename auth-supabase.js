@@ -11,16 +11,7 @@
 // STATE
 // ============================================
 
-const authState = {
-    forms: {
-        login: document.getElementById('loginForm'),
-        signup: document.getElementById('signupForm')
-    },
-    tabs: document.querySelectorAll('.tab-btn'),
-    messageEl: document.getElementById('authMessage'),
-    supabase: null,
-    isOnlineMode: false // será true se Supabase estiver configurado
-};
+let authState = null;
 
 function setStoredSession(userData) {
     localStorage.setItem('user', JSON.stringify(userData));
@@ -473,6 +464,18 @@ function setupEventListeners() {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar authState só depois do DOM estar pronto
+    authState = {
+        forms: {
+            login: document.getElementById('loginForm'),
+            signup: document.getElementById('signupForm')
+        },
+        tabs: document.querySelectorAll('.tab-btn'),
+        messageEl: document.getElementById('authMessage'),
+        supabase: null,
+        isOnlineMode: false // será true se Supabase estiver configurado
+    };
+
     function waitForSupabase(cb) {
         if (window.supabase && window.supabase.createClient) {
             cb();
