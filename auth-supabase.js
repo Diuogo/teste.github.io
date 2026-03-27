@@ -316,12 +316,12 @@ function handleLoginOffline(email, password) {
         if (profile.role === 'developer') {
             showMessage('success', 'Bem-vindo! Redirecionando para painel de administração...');
             setTimeout(() => {
-                window.location.href = 'admin.html';
+                window.location.href = '/teste.github.io/admin.html';
             }, 1500);
         } else if (profile.role === 'owner' || profile.role === 'operator') {
             showMessage('success', 'Bem-vindo! Redirecionando para o painel...');
             setTimeout(() => {
-                window.location.href = 'dashboard.html';
+                window.location.href = '/teste.github.io/dashboard.html';
             }, 1500);
         } else {
             showMessage('error', 'Apenas operadores ou proprietários podem aceder ao painel.');
@@ -407,12 +407,12 @@ async function checkRoleAndRedirect() {
         if (profile.role === 'developer') {
             showMessage('success', 'Bem-vindo! Redirecionando para painel de administração...');
             setTimeout(() => {
-                window.location.href = 'admin.html';
+                window.location.href = '/teste.github.io/admin.html';
             }, 1500);
         } else if (profile.role === 'owner' || profile.role === 'operator') {
             showMessage('success', 'Bem-vindo! Redirecionando para o painel...');
             setTimeout(() => {
-                window.location.href = 'dashboard.html';
+                window.location.href = '/teste.github.io/dashboard.html';
             }, 1500);
         } else {
             showMessage('error', 'Apenas operadores ou proprietários podem aceder ao painel.');
@@ -432,7 +432,7 @@ async function logout() {
         if (error) throw error;
 
         clearSession();
-        window.location.href = 'index.html';
+        window.location.href = '/teste.github.io/index.html';
     } catch (error) {
         console.error('Logout error:', error.message);
     }
@@ -472,4 +472,13 @@ function setupEventListeners() {
 // INITIALIZATION
 // ============================================
 
-document.addEventListener('DOMContentLoaded', initAuth);
+document.addEventListener('DOMContentLoaded', function() {
+    function waitForSupabase(cb) {
+        if (window.supabase && window.supabase.createClient) {
+            cb();
+        } else {
+            setTimeout(() => waitForSupabase(cb), 50);
+        }
+    }
+    waitForSupabase(initAuth);
+});
