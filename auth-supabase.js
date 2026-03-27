@@ -1,4 +1,3 @@
-/**
  * NiceDrop Authentication with Supabase
  * Handles user signup, login, and role management
  * 
@@ -510,3 +509,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     waitForSupabase(initAuth);
 });
+
+// END OF FILE
