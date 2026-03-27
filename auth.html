@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NiceDrop | Sign In / Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body class="auth-page">
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="index.html" class="logo-wrap">
+            <img src="nicedrop.png" class="logo" alt="NiceDrop logo">
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+            <a href="index.html#problem">Problem</a>
+            <a href="index.html#solution">Solution</a>
+            <a href="index.html#technology">Technology</a>
+            <a href="index.html#future">Future</a>
+        </nav>
+
+        <div class="navbar-actions">
+            <a class="cta" href="download.html">DOWNLOAD APP</a>
+        </div>
+    </header>
+
+    <!-- AUTH CONTAINER -->
+    <main id="main" class="auth-container">
+
+        <div class="auth-card">
+
+            <!-- TABS -->
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Entrar</button>
+                <button class="tab-btn" data-tab="signup">Registar</button>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" class="auth-form active" data-form="login">
+                <h2>Bem-vindo</h2>
+                <p class="form-subtitle">Aceda à sua conta</p>
+
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input 
+                        type="email" 
+                        id="loginEmail" 
+                        name="email" 
+                        placeholder="seu@email.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input 
+                        type="password" 
+                        id="loginPassword" 
+                        name="password" 
+                        placeholder="••••••••" 
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-submit">Entrar</button>
+
+                <p class="form-toggle">
+                    Não tem uma conta? 
+                    <button type="button" class="toggle-btn" data-tab="signup">
+                        Registar
+                    </button>
+                </p>
+            </form>
+
+            <!-- SIGNUP FORM -->
+            <form id="signupForm" class="auth-form" data-form="signup">
+                <h2>Criar Conta</h2>
+                <p class="form-subtitle">Crie a sua conta para entrar no dashboard</p>
+
+                <div class="form-group">
+                    <label for="signupName">Nome Completo</label>
+                    <input 
+                        type="text" 
+                        id="signupName" 
+                        name="name" 
+                        placeholder="Seu nome" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input 
+                        type="email" 
+                        id="signupEmail" 
+                        name="email" 
+                        placeholder="seu@email.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input 
+                        type="password" 
+                        id="signupPassword" 
+                        name="password" 
+                        placeholder="••••••••" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="signupConfirm">Confirmar Password</label>
+                    <input 
+                        type="password" 
+                        id="signupConfirm" 
+                        name="confirmPassword" 
+                        placeholder="••••••••" 
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-submit">Criar Conta</button>
+
+                <p class="form-toggle">
+                    Já tem uma conta? 
+                    <button type="button" class="toggle-btn" data-tab="login">
+                        Entrar
+                    </button>
+                </p>
+            </form>
+
+            <!-- MESSAGE AREA -->
+            <div id="authMessage" class="auth-message" style="display: none;"></div>
+
+        </div>
+
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-supabase.js"></script>
+    
+    <!-- SCRIPTS -->
+    <!--<script src="auth.js"></script>-->
+
+</body>
+
+</html>

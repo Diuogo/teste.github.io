@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NiceDrop | Administração</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body class="dashboard-page">
+    <main class="admin-wrap">
+        <header class="admin-header">
+            <h1>Painel de Administração</h1>
+            <div>
+                <span id="adminEmail"></span>
+                <button id="logoutBtn" class="btn-dark">Sair</button>
+            </div>
+        </header>
+
+        <section class="admin-card">
+            <h2>Resumo de Utilizadores</h2>
+            <div id="userTypeSummary" class="user-type-summary"></div>
+            <div class="toolbar">
+                <input type="text" id="searchInput" placeholder="Procurar por nome ou email">
+                <button id="refreshBtn" class="btn-dark">Atualizar</button>
+            </div>
+            <p id="message" class="message"></p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Papel</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersBody"></tbody>
+                </table>
+            </div>
+        </section>
+        <!-- Secção de dashboard para admin -->
+        <section class="admin-card" id="adminDashboardSection" style="display:none;">
+            <h2>Dashboard Admin</h2>
+            <div id="adminDashboardContainer"></div>
+        </section>
+
+        <section class="admin-card">
+            <h2>Criar Loja para Owner</h2>
+            <p>Depois de promover para owner, cria a loja e associa o dono. Escolhe a localização no mapa.</p>
+            <div class="store-form">
+                <input type="email" id="ownerEmail" placeholder="email do owner">
+                <input type="text" id="storeName" placeholder="nome da loja">
+                <input type="text" id="storeCity" placeholder="cidade">
+                <input type="hidden" id="storeLat">
+                <input type="hidden" id="storeLng">
+                <button id="createStoreBtn" class="btn-dark">Criar Loja</button>
+            </div>
+            <div id="map" style="height: 260px; margin-top: 16px; border-radius: 12px; overflow: hidden;"></div>
+        </section>
+
+        <section class="admin-card">
+            <h2>Adicionar Drone a Qualquer Loja</h2>
+            <p>Developers/Admin têm acesso a todas as lojas e conseguem adicionar drones em qualquer uma.</p>
+            <div class="store-form">
+                <select id="addDroneStore"></select>
+                <input type="text" id="addDroneName" placeholder="nome do drone">
+                <button id="addDroneBtn" class="btn-dark">Adicionar Drone</button>
+            </div>
+        </section>
+
+        <section class="admin-card">
+            <h2>Todas as Lojas</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Loja</th>
+                            <th>Cidade</th>
+                            <th>Owner</th>
+                            <th>Drones</th>
+                            <th>Receita</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="storesBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
