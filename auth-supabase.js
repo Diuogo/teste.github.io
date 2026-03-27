@@ -203,12 +203,37 @@ async function handleSignup(e) {
 
     showMessage('info', 'Criando conta...');
 
+
     try {
         if (!authState.isOnlineMode) {
             // Modo demo/localStorage
             handleSignupOffline(name, email, password);
             return;
         }
+// ============================================
+// SIGNUP OFFLINE (via Supabase)
+// ============================================
+
+async function handleSignupOffline(name, email, password) {
+    try {
+        const { data, error } = await authState.supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: {
+                    username: name
+                }
+            }
+        });
+        if (error) {
+            showMessage('error', error.message || 'Erro ao criar conta.');
+            return;
+        }
+        showMessage('success', 'Conta criada! Verifique o seu email para confirmar o registo.');
+    } catch (err) {
+        showMessage('error', err.message || 'Erro ao criar conta.');
+    }
+}
 
         // Sign up with Supabase
         const { data, error } = await authState.supabase.auth.signUp({
